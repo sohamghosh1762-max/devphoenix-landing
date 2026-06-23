@@ -1,103 +1,183 @@
-import Image from "next/image";
+"use client";
+
+import React from "react";
+import { ArrowUpRight, Play, ArrowDown } from "lucide-react";
+import { motion } from "framer-motion";
+import Navbar from "../components/Navbar";
+import BackgroundEffects from "../components/BackgroundEffects";
+import ServiceCards from "../components/ServiceCards";
+import TrustedCompanies from "../components/TrustedCompanies";
+import EcosystemAdvantage from "../components/EcosystemAdvantage";
+import InnovationInAction from "../components/InnovationInAction";
+import BottomCTA from "../components/BottomCTA";
+import PathSelection from "../components/PathSelection";
+import AboutAndFooter from "../components/AboutAndFooter";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  // Reveal animation variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (custom: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: custom * 0.15,
+        ease: [0.16, 1, 0.3, 1] as const, // easeOutExpo
+      },
+    }),
+  };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="relative min-h-screen w-full bg-[#050505] text-white flex flex-col justify-between select-none">
+      {/* Fixed Header */}
+      <Navbar />
+
+      {/* Cyber-tech background layers */}
+      <BackgroundEffects />
+
+      {/* Main Content (Hero Section) */}
+      <main className="flex-1 w-full max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-12 flex flex-col justify-center relative z-10">
+        
+        {/* 2-Column Hero Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
+          
+          {/* Left Column (45% on desktop: lg:col-span-5) */}
+          <div className="lg:col-span-5 flex flex-col justify-center text-left max-w-xl lg:max-w-none">
+            
+            {/* Tag Label */}
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              animate="visible"
+              custom={1}
+              className="flex items-center gap-2 mb-4 md:mb-6"
+            >
+              <span className="text-[10px] md:text-xs font-bold tracking-[0.24em] text-brand-orange font-mono">
+                TECHNOLOGY • EDUCATION • INNOVATION
+              </span>
+            </motion.div>
+
+            {/* Massive Heading */}
+            <motion.h1
+              variants={fadeInUp}
+              initial="hidden"
+              animate="visible"
+              custom={2}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[70px] xl:text-[76px] font-extrabold tracking-tight text-white leading-[1.05] font-sora mb-6"
+            >
+              BUILDING <br />
+              INTELLIGENT <br />
+              <span className="text-orange-glow bg-gradient-to-r from-brand-orange to-brand-amber bg-clip-text text-transparent">
+                DIGITAL <br />
+                ECOSYSTEMS
+              </span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              variants={fadeInUp}
+              initial="hidden"
+              animate="visible"
+              custom={3}
+              className="text-white/60 text-sm md:text-base leading-relaxed mb-8 md:mb-10 font-sans max-w-[500px]"
+            >
+              We combine cutting-edge technology with future-ready education to help businesses scale, automate and succeed in the digital era — while empowering the next generation of innovators.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              animate="visible"
+              custom={4}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-10 md:mb-14"
+            >
+              {/* Primary Button */}
+              <motion.a
+                href="#tech"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="relative px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase text-white flex items-center justify-center gap-2 bg-gradient-to-r from-brand-orange to-brand-amber shadow-[0_0_30px_rgba(255,90,31,0.3)] hover:shadow-[0_0_40px_rgba(255,90,31,0.5)] transition-all duration-300 group"
+              >
+                <span>Explore Tech</span>
+                <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+              </motion.a>
+
+              {/* Secondary Button */}
+              <motion.a
+                href="#academy"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="relative px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase text-white flex items-center justify-center gap-2 border border-brand-orange/30 bg-transparent hover:border-brand-orange hover:bg-brand-orange/5 transition-all duration-300 group"
+              >
+                <span>Explore Academy</span>
+                <ArrowUpRight size={16} className="text-brand-orange group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+              </motion.a>
+            </motion.div>
+
+            {/* Hero Footer Actions */}
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              animate="visible"
+              custom={5}
+              className="flex items-center gap-6 text-white/50 text-xs md:text-sm font-medium border-t border-white/5 pt-6 w-fit"
+            >
+              {/* Watch Our Story */}
+              <a 
+                href="#story" 
+                className="flex items-center gap-2 hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.4)] transition-all duration-300 group"
+              >
+                <div className="w-7 h-7 rounded-full border border-white/10 flex items-center justify-center bg-white/[0.02] group-hover:border-brand-orange/50 group-hover:bg-brand-orange/5 transition-all">
+                  <Play size={10} className="fill-white/80 group-hover:fill-brand-orange text-transparent" />
+                </div>
+                <span>Watch Our Story</span>
+              </a>
+
+              {/* Vertical Divider */}
+              <div className="h-4 w-[1px] bg-white/10" />
+
+              {/* Scroll to Discover */}
+              <a 
+                href="#trusted" 
+                className="flex items-center gap-1.5 hover:text-white transition-all duration-300"
+              >
+                <span>Scroll to Discover</span>
+                <ArrowDown size={14} className="animate-bounce" />
+              </a>
+            </motion.div>
+
+          </div>
+
+          {/* Right Column (55% on desktop: lg:col-span-7) */}
+          <div className="lg:col-span-7 w-full h-full flex items-center justify-center relative min-h-[600px] lg:min-h-[750px]">
+            <ServiceCards />
+          </div>
+
         </div>
+
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      {/* Trusted Companies bar */}
+      <div id="trusted" className="w-full relative z-10">
+        <TrustedCompanies />
+      </div>
+
+      {/* Path Selection Section */}
+      <PathSelection />
+
+      {/* Section 1: Ecosystem Advantage */}
+      <EcosystemAdvantage />
+
+      {/* Section 2: Innovation in Action */}
+      <InnovationInAction />
+
+      {/* Bottom CTA Banner */}
+      <BottomCTA />
+
+      {/* About Us & Footer Section */}
+      <AboutAndFooter />
     </div>
   );
 }

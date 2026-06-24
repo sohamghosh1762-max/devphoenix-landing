@@ -4,8 +4,10 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useConnectModal } from "../context/ConnectModalContext";
 
 export default function BottomCTA() {
+  const { openModal } = useConnectModal();
   return (
     <section className="relative w-full bg-[#050505] pb-24 px-6 z-20">
       {/* Noise overlay */}
@@ -58,8 +60,8 @@ export default function BottomCTA() {
           {/* Right: Actions */}
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto flex-shrink-0">
             {/* Primary Button */}
-            <motion.a
-              href="#connect"
+            <motion.button
+              onClick={() => openModal("client")}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="w-full sm:w-auto px-8 py-4 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase text-white flex items-center justify-center gap-2 bg-gradient-to-r from-brand-orange to-brand-amber shadow-[0_0_30px_rgba(255,90,31,0.25)] hover:shadow-[0_0_40px_rgba(255,90,31,0.45)] transition-all duration-300 group/btn1 cursor-pointer"
@@ -69,11 +71,11 @@ export default function BottomCTA() {
                 size={16}
                 className="group-hover/btn1:translate-x-1 transition-transform duration-300"
               />
-            </motion.a>
+            </motion.button>
 
             {/* Secondary Button */}
-            <motion.a
-              href="#academy"
+            <motion.button
+              onClick={() => openModal("student")}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="w-full sm:w-auto px-8 py-4 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase text-white flex items-center justify-center gap-2 border border-white/10 bg-white/[0.02] hover:border-brand-orange/50 hover:bg-brand-orange/[0.04] transition-all duration-300 group/btn2 cursor-pointer"
@@ -83,7 +85,7 @@ export default function BottomCTA() {
                 size={16}
                 className="text-white/50 group-hover/btn2:text-brand-orange group-hover/btn2:translate-x-1 transition-all duration-300"
               />
-            </motion.a>
+            </motion.button>
           </div>
         </motion.div>
       </div>

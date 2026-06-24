@@ -238,14 +238,15 @@ export default function PathSelection() {
 
             {/* Bottom CTA Button */}
             <div className="relative z-10 w-full pt-4">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-4 px-6 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase text-white flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 shadow-[0_0_20px_rgba(124,58,237,0.2)] group-hover:shadow-[0_0_35px_rgba(124,58,237,0.45)] group-hover:from-purple-500 group-hover:to-indigo-500 transition-all duration-300"
-              >
-                <span>Explore Tech Solutions</span>
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-              </motion.button>
+              <motion.a
+  href="https://tech.devphoenix.com/"
+  whileHover={{ scale: 1.02 }}
+  whileTap={{ scale: 0.98 }}
+  className="w-full py-4 px-6 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase text-white flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 shadow-[0_0_20px_rgba(124,58,237,0.2)] group-hover:shadow-[0_0_35px_rgba(124,58,237,0.45)] group-hover:from-purple-500 group-hover:to-indigo-500 transition-all duration-300"
+>
+  <span>Explore Tech Solutions</span>
+  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+</motion.a>
             </div>
 
           </motion.div>
@@ -320,14 +321,15 @@ export default function PathSelection() {
 
             {/* Bottom CTA Button */}
             <div className="relative z-10 w-full pt-4">
-              <motion.button
+              <motion.a
+                href="https://academy.devphoenix.com/"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full py-4 px-6 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase text-white flex items-center justify-center gap-2 bg-gradient-to-r from-[#ff5a1f] to-[#ff8a00] shadow-[0_0_20px_rgba(255,90,31,0.2)] group-hover:shadow-[0_0_35px_rgba(255,90,31,0.45)] group-hover:from-[#ff6e36] group-hover:to-[#ff9b24] transition-all duration-300"
               >
                 <span>Explore Academy</span>
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-              </motion.button>
+              </motion.a>
             </div>
 
           </motion.div>

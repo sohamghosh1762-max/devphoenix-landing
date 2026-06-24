@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useConnectModal } from "../context/ConnectModalContext";
 import { 
   Calendar, 
   Cpu, 
@@ -28,6 +29,7 @@ interface NetworkParticle {
 
 export default function AboutAndFooter() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { openModal } = useConnectModal();
 
   // Network particles effect
   useEffect(() => {
@@ -683,15 +685,15 @@ export default function AboutAndFooter() {
               <div className="flex flex-col gap-4">
 
   <a
-    href="mailto:hello@devphoenix.com"
+    href="devphoenix@zohomail.in"
     className="flex items-center gap-3 text-white/70 hover:text-[#ff5a1f] text-xs sm:text-sm transition-colors group"
   >
     <Mail className="w-4 h-4 text-[#ff5a1f]/60 group-hover:text-[#ff5a1f]" />
-    <span>contact@devphoenix.com</span>
+    <span>devphoenix@zohomail.in</span>
   </a>
 
   <a
-    href="tel:+919876543210"
+    href="tel:+919734876490"
     className="flex items-center gap-3 text-white/70 hover:text-[#ff5a1f] text-xs sm:text-sm transition-colors group"
   >
     <Phone className="w-4 h-4 text-[#ff5a1f]/60 group-hover:text-[#ff5a1f]" />
@@ -740,9 +742,10 @@ export default function AboutAndFooter() {
 
               {/* Let's Connect CTA Button */}
               <motion.button
+                onClick={() => openModal()}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full mt-2 py-3 px-5 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase text-white bg-transparent border border-[#ff5a1f]/40 hover:border-[#ff5a1f] shadow-sm hover:shadow-[0_0_20px_rgba(255,90,31,0.25)] hover:bg-[#ff5a1f]/5 transition-all duration-300 flex items-center justify-center gap-2 group"
+                className="w-full mt-2 py-3 px-5 rounded-xl text-xs sm:text-sm font-bold tracking-wider uppercase text-white bg-transparent border border-[#ff5a1f]/40 hover:border-[#ff5a1f] shadow-sm hover:shadow-[0_0_20px_rgba(255,90,31,0.25)] hover:bg-[#ff5a1f]/5 transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
               >
                 <span>Let&apos;s Connect</span>
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />

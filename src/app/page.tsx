@@ -13,6 +13,8 @@ import BottomCTA from "../components/BottomCTA";
 import PathSelection from "../components/PathSelection";
 import AboutAndFooter from "../components/AboutAndFooter";
 import CinematicIntro from "../components/CinematicIntro";
+import { ConnectModalProvider } from "../context/ConnectModalContext";
+import ConnectModal from "../components/ConnectModal";
 
 function MainWebsite() {
   // Reveal animation variants
@@ -96,7 +98,7 @@ function MainWebsite() {
             >
               {/* Primary Button */}
               <motion.a
-                href="#tech"
+                href="https://tech.devphoenix.com/"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="relative px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase text-white flex items-center justify-center gap-2 bg-gradient-to-r from-brand-orange to-brand-amber shadow-[0_0_30px_rgba(255,90,31,0.3)] hover:shadow-[0_0_40px_rgba(255,90,31,0.5)] transition-all duration-300 group"
@@ -107,7 +109,7 @@ function MainWebsite() {
 
               {/* Secondary Button */}
               <motion.a
-                href="#academy"
+                href="https://academy.devphoenix.com/"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="relative px-8 py-4 rounded-xl text-sm font-bold tracking-wider uppercase text-white flex items-center justify-center gap-2 border border-brand-orange/30 bg-transparent hover:border-brand-orange hover:bg-brand-orange/5 transition-all duration-300 group"
@@ -245,7 +247,10 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
-          <MainWebsite />
+          <ConnectModalProvider>
+            <MainWebsite />
+            <ConnectModal />
+          </ConnectModalProvider>
         </motion.div>
       )}
     </AnimatePresence>

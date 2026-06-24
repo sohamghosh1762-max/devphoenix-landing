@@ -4,11 +4,13 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowRight, Menu, X } from "lucide-react";
 import Image from "next/image";
+import { useConnectModal } from "../context/ConnectModalContext";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+  const { openModal } = useConnectModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,8 +26,8 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Home", href: "#home" },
-    { name: "Tech", href: "#tech" },
-    { name: "Academy", href: "#academy" },
+    { name: "Tech", href: "https://tech.devphoenix.com/" },
+    { name: "Academy", href: "https://academy.devphoenix.com/" },
     { name: "Our Work", href: "#work" },
     { name: "About Us", href: "#about" },
   ];
@@ -121,11 +123,11 @@ export default function Navbar() {
 
         {/* Right Side: Let's Connect Button (Desktop) */}
         <div className="hidden md:block">
-          <motion.a
-            href="#connect"
+          <motion.button
+            onClick={() => openModal()}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="relative px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase text-white overflow-hidden group flex items-center gap-2"
+            className="relative px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase text-white overflow-hidden group flex items-center gap-2 cursor-pointer"
           >
             {/* Background glass and border */}
             <div className="absolute inset-0 rounded-full border border-white/10 group-hover:border-brand-orange/40 bg-white/[0.02] group-hover:bg-brand-orange/[0.04] transition-all duration-300" />
@@ -135,7 +137,7 @@ export default function Navbar() {
 
             <span className="relative z-10">Let&apos;s Connect</span>
             <ArrowRight size={14} className="relative z-10 text-white/70 group-hover:text-brand-orange group-hover:translate-x-1 transition-all duration-300" />
-          </motion.a>
+          </motion.button>
         </div>
 
         {/* Hamburger Menu Icon (Mobile) */}
@@ -185,13 +187,15 @@ export default function Navbar() {
                   ))}
                 </div>
               </div>
-              <motion.a
-                href="#connect"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="w-full text-center py-3 rounded-xl border border-brand-orange/20 bg-brand-orange/5 hover:bg-brand-orange/10 text-white font-semibold text-sm tracking-wide transition-all mt-2"
+              <motion.button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  openModal();
+                }}
+                className="w-full text-center py-3 rounded-xl border border-brand-orange/20 bg-brand-orange/5 hover:bg-brand-orange/10 text-white font-semibold text-sm tracking-wide transition-all mt-2 cursor-pointer"
               >
                 Let&apos;s Connect
-              </motion.a>
+              </motion.button>
             </div>
           </motion.div>
         )}

@@ -483,7 +483,7 @@ export default function AboutAndFooter() {
             transition={{ duration: 0.6 }}
             className="text-[10px] font-bold tracking-[0.35em] uppercase text-[#ff5a1f] mb-10 text-center"
           >
-            TRUSTED BY VISIONARIES
+            POWERED BY VISIONARIES
           </motion.span>
 
           {/* Logo row */}
@@ -582,6 +582,7 @@ export default function AboutAndFooter() {
           </motion.div>
         </div>
 
+
         {/* ================= FOOTER SECTION ================= */}
         <footer className="w-full border-t border-white/5 pt-16 pb-8 z-10 relative">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
@@ -636,6 +637,7 @@ export default function AboutAndFooter() {
                 <li><a href="#team" className="text-white/60 text-xs sm:text-sm hover:text-[#ff5a1f] transition-colors duration-200">Our Team</a></li>
                 <li><a href="#careers" className="text-white/60 text-xs sm:text-sm hover:text-[#ff5a1f] transition-colors duration-200">Careers</a></li>
                 <li><a href="#blog" className="text-white/60 text-xs sm:text-sm hover:text-[#ff5a1f] transition-colors duration-200">Blog</a></li>
+                <li><a href="#map" className="text-white/60 text-xs sm:text-sm hover:text-[#ff5a1f] transition-colors duration-200">Map</a></li>
               </ul>
             </div>
 
@@ -745,6 +747,23 @@ export default function AboutAndFooter() {
                 <span>Let&apos;s Connect</span>
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
               </motion.button>
+            </div>
+
+            {/* Column 7: Map */}
+            <div className="col-span-2 md:col-span-3 lg:col-span-4 w-full flex flex-col gap-4 text-left lg:pl-6 border-t border-white/5 lg:border-t-0 lg:border-l border-white/5 pt-8 lg:pt-0">
+              <h4 className="font-sora font-extrabold text-xs tracking-wider uppercase text-white">Our Location</h4>
+              <div className="relative w-full h-[300px] lg:h-[320px] rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] shadow-lg group">
+                <iframe
+                  src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=59/D/5,%20VIVEKANANDA,%20SARANI,%20SERAMPORE,%20Mallickpara,%20SERAMPORE,%20Serampur%20Uttarpara,%20Hooghly-%20712203,%20West%20Bengal,%20India%20SERAMPORE+(DEVPHOENIX%20Headquarter)&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  title="DevPhoenix Headquarter Map"
+                  className="w-full h-full rounded-2xl filter invert-[0.9] hue-rotate-[180deg] brightness-[0.9] contrast-[1.2] opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                />
+              </div>
             </div>
 
           </div>

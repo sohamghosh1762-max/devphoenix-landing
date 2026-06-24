@@ -723,9 +723,14 @@ export default function AboutAndFooter() {
       <p className="text-white font-semibold mb-1">
         Main Branch
       </p>
-      <p>
+      <a
+      href="https://www.google.com/maps/place/Private+Rd,+Lakshminagar,+Dum+Dum,+West+Bengal+700074/@22.6247959,88.4048714,17z/data=!4m6!3m5!1s0x39f89e05c6b9da45:0xcc9b0c68cb59e493!8m2!3d22.6243602!4d88.4078111!16s%2Fg%2F11fht2lwpd?entry=ttu&g_ep=EgoyMDI2MDYyMS4wIKXMDSoASAFQAw%3D%3D"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-[#ff5a1f] transition-colors duration-300"
+    >
         Private road, dumdum ,Kolkata - 700028, West Bengal, India.
-      </p>
+      </a>
     </div>
   </div>
 

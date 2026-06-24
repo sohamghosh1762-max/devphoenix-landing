@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowUpRight, Play, ArrowDown } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import BackgroundEffects from "../components/BackgroundEffects";
 import ServiceCards from "../components/ServiceCards";
@@ -12,8 +12,9 @@ import InnovationInAction from "../components/InnovationInAction";
 import BottomCTA from "../components/BottomCTA";
 import PathSelection from "../components/PathSelection";
 import AboutAndFooter from "../components/AboutAndFooter";
+import CinematicIntro from "../components/CinematicIntro";
 
-export default function Home() {
+function MainWebsite() {
   // Reveal animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -36,7 +37,7 @@ export default function Home() {
       {/* Cyber-tech background layers */}
       <BackgroundEffects />
 
-      {/* Main Content (Hero Section) */}
+      {/* 1. Hero Section */}
       <main className="flex-1 w-full max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-12 flex flex-col justify-center relative z-10">
         
         {/* 2-Column Hero Grid */}
@@ -140,7 +141,7 @@ export default function Home() {
 
               {/* Scroll to Discover */}
               <a 
-                href="#trusted" 
+                href="#path-selection" 
                 className="flex items-center gap-1.5 hover:text-white transition-all duration-300"
               >
                 <span>Scroll to Discover</span>
@@ -159,25 +160,94 @@ export default function Home() {
 
       </main>
 
-      {/* Trusted Companies bar */}
+      {/* 2. Choose Your Path Section */}
+      <div id="path-selection">
+        <PathSelection />
+      </div>
+
+      {/* 3. Ecosystem Advantage */}
+      <EcosystemAdvantage />
+
+      {/* 4. Innovation in Action */}
+      <InnovationInAction />
+
+      {/* 5. Trusted Companies Section */}
       <div id="trusted" className="w-full relative z-10">
         <TrustedCompanies />
       </div>
 
-      {/* Path Selection Section */}
-      <PathSelection />
-
-      {/* Section 1: Ecosystem Advantage */}
-      <EcosystemAdvantage />
-
-      {/* Section 2: Innovation in Action */}
-      <InnovationInAction />
-
       {/* Bottom CTA Banner */}
       <BottomCTA />
 
-      {/* About Us & Footer Section */}
+      {/* 6. About DevPhoenix & Footer */}
       <AboutAndFooter />
     </div>
+  );
+}
+
+export default function Home() {
+  const [showIntro, setShowIntro] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    let introSeen = "false";
+    try {
+      introSeen = sessionStorage.getItem("devphoenix_intro_seen") || "false";
+    } catch (e) {
+      console.warn("sessionStorage is disabled or unavailable:", e);
+    }
+    
+    if (introSeen === "true") {
+      setShowIntro(false);
+    } else {
+      setShowIntro(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (showIntro) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showIntro]);
+
+  const handleIntroComplete = () => {
+    try {
+      sessionStorage.setItem("devphoenix_intro_seen", "true");
+    } catch (e) {
+      console.warn("sessionStorage failed to save state:", e);
+    }
+    setShowIntro(false);
+  };
+
+  if (showIntro === null) {
+    return <div className="min-h-screen bg-[#050505]" />;
+  }
+
+  return (
+    <AnimatePresence mode="popLayout">
+      {showIntro ? (
+        <motion.div
+          key="intro"
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="fixed inset-0 z-[9999]"
+        >
+          <CinematicIntro onComplete={handleIntroComplete} />
+        </motion.div>
+      ) : (
+        <motion.div
+          key="website"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <MainWebsite />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

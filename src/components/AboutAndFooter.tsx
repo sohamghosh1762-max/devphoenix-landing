@@ -685,7 +685,7 @@ export default function AboutAndFooter() {
     className="flex items-center gap-3 text-white/70 hover:text-[#ff5a1f] text-xs sm:text-sm transition-colors group"
   >
     <Mail className="w-4 h-4 text-[#ff5a1f]/60 group-hover:text-[#ff5a1f]" />
-    <span>hello@devphoenix.com</span>
+    <span>contact@devphoenix.com</span>
   </a>
 
   <a
@@ -693,7 +693,7 @@ export default function AboutAndFooter() {
     className="flex items-center gap-3 text-white/70 hover:text-[#ff5a1f] text-xs sm:text-sm transition-colors group"
   >
     <Phone className="w-4 h-4 text-[#ff5a1f]/60 group-hover:text-[#ff5a1f]" />
-    <span>+91 98765 43210</span>
+    <span>+91 9734876490</span>
   </a>
 
 {/* Headquarters */}

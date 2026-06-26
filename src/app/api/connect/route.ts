@@ -73,7 +73,7 @@ export async function POST(request: Request) {
 
       const data = result.data;
       const subject = `[Academy App] Student Application: ${data.fullName} (${data.domains.join(", ")})`;
-      
+
       const htmlContent = `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ff5a1f/20; border-radius: 10px; background-color: #050505; color: #ffffff;">
           <h2 style="color: #ff5a1f; border-bottom: 2px solid #ff5a1f; padding-bottom: 10px; font-size: 20px; text-transform: uppercase;">
@@ -143,7 +143,7 @@ export async function POST(request: Request) {
 
       const data = result.data;
       const subject = `[Client Request] Consultation Enquiry: ${data.fullName} (${data.companyName})`;
-      
+
       const htmlContent = `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ff5a1f/20; border-radius: 10px; background-color: #050505; color: #ffffff;">
           <h2 style="color: #ff5a1f; border-bottom: 2px solid #ff5a1f; padding-bottom: 10px; font-size: 20px; text-transform: uppercase;">
@@ -178,7 +178,7 @@ export async function POST(request: Request) {
       }
 
       const response = await resend.emails.send({
-         from: "DevPhoenix Connect <connect@devphoenix.com>",
+        from: "DevPhoenix Connect <connect@devphoenix.com>",
         to: "devphoenix@zohomail.in",
         subject: subject,
         html: htmlContent,

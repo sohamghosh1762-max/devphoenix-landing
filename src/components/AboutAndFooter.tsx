@@ -615,7 +615,7 @@ export default function AboutAndFooter() {
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </a>
-                <a href="#instagram" title="Instagram" aria-label="Instagram" className="w-9 h-9 rounded-lg bg-white/[0.02] border border-white/10 flex items-center justify-center text-white/60 hover:text-[#ff5a1f] hover:border-[#ff5a1f]/30 hover:bg-[#ff5a1f]/5 transition-all duration-300">
+                <a href="https://www.instagram.com/devphoenix.tech?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" title="Instagram" aria-label="Instagram" className="w-9 h-9 rounded-lg bg-white/[0.02] border border-white/10 flex items-center justify-center text-white/60 hover:text-[#ff5a1f] hover:border-[#ff5a1f]/30 hover:bg-[#ff5a1f]/5 transition-all duration-300">
                   <svg viewBox="0 0 24 24" className="w-4 h-4 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
@@ -685,11 +685,11 @@ export default function AboutAndFooter() {
               <div className="flex flex-col gap-4">
 
   <a
-    href="devphoenix@zohomail.in"
+    href="mailto:devphoenix@zoho.in"
     className="flex items-center gap-3 text-white/70 hover:text-[#ff5a1f] text-xs sm:text-sm transition-colors group"
   >
     <Mail className="w-4 h-4 text-[#ff5a1f]/60 group-hover:text-[#ff5a1f]" />
-    <span>devphoenix@zohomail.in</span>
+    <span>devphoenix@zoho.in</span>
   </a>
 
   <a
@@ -709,7 +709,7 @@ export default function AboutAndFooter() {
     </p>
 
     <a
-      href="https://www.google.com/maps/place/MALLICKPARA+POST+OFFICE/@22.7518135,88.3304936,17z/data=!3m1!4b1!4m6!3m5!1s0x39f89b92cb779425:0x4b2f34330d837358!8m2!3d22.7518135!4d88.3330685!16s%2Fg%2F11j0jlrn67?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D"
+      href="https://www.google.com/maps/place/MALLICKPARA+POST+OFFICE/@22.7456917,88.3181451,15z/data=!4m10!1m2!2m1!1s59%2FD%2F5,+VIVEKANANDA,+SARANI,+SERAMPORE,+Mallickpara,+SERAMPORE,+Serampur+Uttarpara,+Hooghly-+712203,+West+Bengal,+India!3m6!1s0x39f89b92cb779425:0x4b2f34330d837358!8m2!3d22.7518135!4d88.3330685!15sCnc1OS9ELzUsIFZJVkVLQU5BTkRBLCBTQVJBTkksIFNFUkFNUE9SRSwgTWFsbGlja3BhcmEsIFNFUkFNUE9SRSwgU2VyYW1wdXIgVXR0YXJwYXJhLCBIb29naGx5LSA3MTIyMDMsIFdlc3QgQmVuZ2FsLCBJbmRpYZIBC3Bvc3Rfb2ZmaWNl4AEA!16s%2Fg%2F11j0jlrn67?entry=ttu&g_ep=EgoyMDI2MDYyMy4wIKXMDSoASAFQAw%3D%3D"
       target="_blank"
       rel="noopener noreferrer"
       className="hover:text-[#ff5a1f] transition-colors duration-300"

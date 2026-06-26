@@ -120,3 +120,30 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #ff5a1f;
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Safe areas helper classes */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+.safe-bottom {
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+}
+
+/* Glass card active state border glow */
+.glass-card-glow {
+  border-color: rgba(255, 90, 31, 0.45);
+  box-shadow: 0 0 25px rgba(255, 90, 31, 0.15), inset 0 0 12px rgba(255, 90, 31, 0.05);
+}

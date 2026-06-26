@@ -13,6 +13,7 @@ import BottomCTA from "../components/BottomCTA";
 import PathSelection from "../components/PathSelection";
 import AboutAndFooter from "../components/AboutAndFooter";
 import CinematicIntro from "../components/CinematicIntro";
+import MobileApp from "../components/MobileApp";
 import { ConnectModalProvider } from "../context/ConnectModalContext";
 import ConnectModal from "../components/ConnectModal";
 
@@ -189,7 +190,19 @@ function MainWebsite() {
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState<boolean | null>(null);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
+  // Screen size detection
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Session Intro check
   useEffect(() => {
     let introSeen = "false";
     try {
@@ -242,15 +255,23 @@ export default function Home() {
         </motion.div>
       ) : (
         <motion.div
-          key="website"
+          key={isMobile ? "mobile-app" : "desktop-website"}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
+          className="w-full"
         >
-          <ConnectModalProvider>
-            <MainWebsite />
-            <ConnectModal />
-          </ConnectModalProvider>
+          {isMobile ? (
+            <ConnectModalProvider>
+              <MobileApp onPlayDesktopIntro={() => setShowIntro(true)} />
+              <ConnectModal />
+            </ConnectModalProvider>
+          ) : (
+            <ConnectModalProvider>
+              <MainWebsite />
+              <ConnectModal />
+            </ConnectModalProvider>
+          )}
         </motion.div>
       )}
     </AnimatePresence>

@@ -9,6 +9,9 @@ interface ConnectModalContextType {
   initialFlow: ConnectFlow;
   openModal: (flow?: ConnectFlow) => void;
   closeModal: () => void;
+  isTeamOpen: boolean;
+  openTeam: () => void;
+  closeTeam: () => void;
 }
 
 const ConnectModalContext = createContext<ConnectModalContextType | undefined>(
@@ -18,6 +21,7 @@ const ConnectModalContext = createContext<ConnectModalContextType | undefined>(
 export function ConnectModalProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [initialFlow, setInitialFlow] = useState<ConnectFlow>("select");
+  const [isTeamOpen, setIsTeamOpen] = useState(false);
 
   const openModal = (flow: ConnectFlow = "select") => {
     setInitialFlow(flow);
@@ -28,9 +32,17 @@ export function ConnectModalProvider({ children }: { children: React.ReactNode }
     setIsOpen(false);
   };
 
-  // Lock body scroll when modal is open
+  const openTeam = () => {
+    setIsTeamOpen(true);
+  };
+
+  const closeTeam = () => {
+    setIsTeamOpen(false);
+  };
+
+  // Lock body scroll when modal or team overlay is open
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen || isTeamOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -38,11 +50,19 @@ export function ConnectModalProvider({ children }: { children: React.ReactNode }
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isOpen]);
+  }, [isOpen, isTeamOpen]);
 
   return (
     <ConnectModalContext.Provider
-      value={{ isOpen, initialFlow, openModal, closeModal }}
+      value={{
+        isOpen,
+        initialFlow,
+        openModal,
+        closeModal,
+        isTeamOpen,
+        openTeam,
+        closeTeam,
+      }}
     >
       {children}
     </ConnectModalContext.Provider>

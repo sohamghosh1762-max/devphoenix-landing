@@ -8,6 +8,7 @@ import {
   GraduationCap, 
   Briefcase, 
   Info, 
+  Users, 
   ArrowUpRight, 
   Play, 
   ArrowDown, 
@@ -40,6 +41,7 @@ import Image from "next/image";
 import { useConnectModal } from "../context/ConnectModalContext";
 import TrustedCompanies from "./TrustedCompanies";
 import BackgroundEffects from "./BackgroundEffects";
+import { TeamView } from "./TeamOverlay";
 
 interface ServiceItem {
   id: number;
@@ -69,14 +71,15 @@ export default function MobileApp({ onPlayDesktopIntro }: MobileAppProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { openModal } = useConnectModal();
 
-  // Navigation Items (6 tabs: Home, Tech, Academy, Work, Resources, About)
+  // Navigation Items (7 tabs: Home, Tech, Academy, Work, Team, Resources, About)
   const navItems = [
     { id: 0, label: "Home", icon: <HomeIcon size={16} /> },
     { id: 1, label: "Tech", icon: <Cpu size={16} /> },
     { id: 2, label: "Academy", icon: <GraduationCap size={16} /> },
     { id: 3, label: "Our Work", icon: <Briefcase size={16} /> },
-    { id: 4, label: "Resources", icon: <BookOpen size={16} /> },
-    { id: 5, label: "About Us", icon: <Info size={16} /> },
+    { id: 4, label: "Our Team", icon: <Users size={16} /> },
+    { id: 5, label: "Resources", icon: <BookOpen size={16} /> },
+    { id: 6, label: "About Us", icon: <Info size={16} /> },
   ];
 
   // Motion variants for tab change slide animation
@@ -123,10 +126,10 @@ export default function MobileApp({ onPlayDesktopIntro }: MobileAppProps) {
           <Image
             src="/logo.png"
             alt="DevPhoenix"
-            width={160}
-            height={40}
+            width={190}
+            height={48}
             priority
-            className="h-9 w-auto object-contain"
+            className="h-11 w-auto object-contain"
           />
         </div>
         <button
@@ -152,10 +155,10 @@ export default function MobileApp({ onPlayDesktopIntro }: MobileAppProps) {
               <Image
                 src="/logo.png"
                 alt="DevPhoenix"
-                width={160}
-                height={40}
+                width={190}
+                height={48}
                 priority
-                className="h-9 w-auto object-contain"
+                className="h-11 w-auto object-contain"
               />
               <button
                 onClick={() => setIsMenuOpen(false)}
@@ -209,7 +212,17 @@ export default function MobileApp({ onPlayDesktopIntro }: MobileAppProps) {
 
               <button
                 onClick={() => {
-                  handleTabChange(5); // About Us tab
+                  handleTabChange(4); // Our Team tab
+                  setIsMenuOpen(false);
+                }}
+                className="text-left text-xl font-bold font-sora text-white hover:text-brand-orange transition-colors cursor-pointer"
+              >
+                Our Team
+              </button>
+
+              <button
+                onClick={() => {
+                  handleTabChange(6); // About Us tab
                   setIsMenuOpen(false);
                 }}
                 className="text-left text-xl font-bold font-sora text-white hover:text-brand-orange transition-colors cursor-pointer"
@@ -229,7 +242,7 @@ export default function MobileApp({ onPlayDesktopIntro }: MobileAppProps) {
                 <div className="grid grid-cols-2 gap-y-4 gap-x-2 pt-2">
                   <button
                     onClick={() => {
-                      handleTabChange(4); // resources tab
+                      handleTabChange(5); // resources tab
                       setIsMenuOpen(false);
                     }}
                     className="text-left text-[13px] font-medium text-white/70 hover:text-brand-orange transition-colors cursor-pointer"
@@ -247,7 +260,7 @@ export default function MobileApp({ onPlayDesktopIntro }: MobileAppProps) {
                   </button>
                   <button
                     onClick={() => {
-                      handleTabChange(4); // resources tab
+                      handleTabChange(5); // resources tab
                       setIsMenuOpen(false);
                     }}
                     className="text-left text-[13px] font-medium text-white/70 hover:text-brand-orange transition-colors cursor-pointer"
@@ -256,7 +269,7 @@ export default function MobileApp({ onPlayDesktopIntro }: MobileAppProps) {
                   </button>
                   <button
                     onClick={() => {
-                      handleTabChange(4); // resources tab
+                      handleTabChange(5); // resources tab
                       setIsMenuOpen(false);
                     }}
                     className="text-left text-[13px] font-medium text-white/70 hover:text-brand-orange transition-colors cursor-pointer"
@@ -305,8 +318,15 @@ export default function MobileApp({ onPlayDesktopIntro }: MobileAppProps) {
             {activeTab === 1 && <TechView onConnect={() => openModal("client")} />}
             {activeTab === 2 && <AcademyView onConnect={() => openModal("student")} />}
             {activeTab === 3 && <WorkView />}
-            {activeTab === 4 && <ResourcesView />}
-            {activeTab === 5 && (
+            {activeTab === 4 && (
+              <TeamView 
+                isMobile={true}
+                onExploreWork={() => handleTabChange(3)}
+                onBackToHome={() => handleTabChange(0)}
+              />
+            )}
+            {activeTab === 5 && <ResourcesView />}
+            {activeTab === 6 && (
               <AboutView 
                 onPlayIntro={onPlayDesktopIntro}
                 onConnect={() => openModal()}
@@ -429,12 +449,12 @@ function HomeView({ onExploreTech, onExploreAcademy, onPlayIntro }: HomeViewProp
       </div>
 
       {/* Custom Floating Centersparkles Illustration */}
-      <div className="relative w-full aspect-square max-w-[260px] mx-auto flex items-center justify-center pointer-events-none my-4">
+      <div className="relative w-full aspect-square max-w-[320px] mx-auto flex items-center justify-center pointer-events-none my-6">
         
         {/* Center icon container (enlarged and cleaned of background rings) */}
         <motion.div
           animate={{
-            y: [-12, 12, -12],
+            y: [-15, 15, -15],
             scale: [0.96, 1.04, 0.96]
           }}
           transition={{
@@ -442,17 +462,17 @@ function HomeView({ onExploreTech, onExploreAcademy, onPlayIntro }: HomeViewProp
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="relative w-36 h-36 flex items-center justify-center"
+          className="relative w-48 h-48 flex items-center justify-center"
         >
           {/* Intense drop shadow glow behind the enlarged logo */}
-          <div className="absolute inset-0 rounded-full blur-[40px] bg-brand-orange/25 opacity-70" />
+          <div className="absolute inset-0 rounded-full blur-[50px] bg-brand-orange/25 opacity-70" />
           
           <Image
             src="/phoenix-icon.png"
             alt="DevPhoenix Center"
-            width={200}
-            height={200}
-            className="w-28 h-28 object-contain drop-shadow-[0_0_25px_rgba(255,90,31,0.7)]"
+            width={240}
+            height={240}
+            className="w-36 h-36 object-contain drop-shadow-[0_0_30px_rgba(255,90,31,0.75)]"
             priority
           />
         </motion.div>

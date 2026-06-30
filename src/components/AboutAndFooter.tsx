@@ -29,7 +29,7 @@ interface NetworkParticle {
 
 export default function AboutAndFooter() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { openModal } = useConnectModal();
+  const { openModal, openTeam } = useConnectModal();
 
   // Network particles effect
   useEffect(() => {
@@ -634,9 +634,21 @@ export default function AboutAndFooter() {
             <div className="flex flex-col items-start gap-4 text-left">
               <h4 className="font-sora font-extrabold text-xs tracking-wider uppercase text-white">Company</h4>
               <ul className="flex flex-col gap-2.5">
+                <li><a href="#work" className="text-white/60 text-xs sm:text-sm hover:text-[#ff5a1f] transition-colors duration-200">Our Work</a></li>
+                <li>
+                  <a 
+                    href="#team" 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openTeam();
+                    }}
+                    className="text-white/60 text-xs sm:text-sm hover:text-[#ff5a1f] transition-colors duration-200"
+                  >
+                    Our Team
+                  </a>
+                </li>
                 <li><a href="#about" className="text-white/60 text-xs sm:text-sm hover:text-[#ff5a1f] transition-colors duration-200">About Us</a></li>
                 <li><a href="#mission" className="text-white/60 text-xs sm:text-sm hover:text-[#ff5a1f] transition-colors duration-200">Our Mission</a></li>
-                <li><a href="#team" className="text-white/60 text-xs sm:text-sm hover:text-[#ff5a1f] transition-colors duration-200">Our Team</a></li>
                 <li><a href="#careers" className="text-white/60 text-xs sm:text-sm hover:text-[#ff5a1f] transition-colors duration-200">Careers</a></li>
                 <li><a href="#blog" className="text-white/60 text-xs sm:text-sm hover:text-[#ff5a1f] transition-colors duration-200">Blog</a></li>
                 <li><a href="#map" className="text-white/60 text-xs sm:text-sm hover:text-[#ff5a1f] transition-colors duration-200">Map</a></li>

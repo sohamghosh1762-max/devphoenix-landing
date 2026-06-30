@@ -10,7 +10,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
-  const { openModal } = useConnectModal();
+  const { openModal, openTeam } = useConnectModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +29,7 @@ export default function Navbar() {
     { name: "Tech", href: "https://tech.devphoenix.com/" },
     { name: "Academy", href: "https://academy.devphoenix.com/" },
     { name: "Our Work", href: "#work" },
+    { name: "Our Team", href: "#team" },
     { name: "About Us", href: "#about" },
   ];
 
@@ -70,6 +71,12 @@ export default function Navbar() {
             <a
               key={item.name}
               href={item.href}
+              onClick={(e) => {
+                if (item.href === "#team") {
+                  e.preventDefault();
+                  openTeam();
+                }
+              }}
               className="relative py-2 text-sm text-white/70 hover:text-white font-medium tracking-wide transition-colors duration-200 group"
             >
               {item.name}
@@ -164,7 +171,13 @@ export default function Navbar() {
                 <a
                   key={item.name}
                   href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    setIsMobileMenuOpen(false);
+                    if (item.href === "#team") {
+                      e.preventDefault();
+                      openTeam();
+                    }
+                  }}
                   className="text-base font-medium text-white/80 hover:text-brand-orange transition-colors py-1"
                 >
                   {item.name}

@@ -16,6 +16,7 @@ import CinematicIntro from "../components/CinematicIntro";
 import MobileApp from "../components/MobileApp";
 import { ConnectModalProvider } from "../context/ConnectModalContext";
 import ConnectModal from "../components/ConnectModal";
+import TeamOverlay from "../components/TeamOverlay";
 
 function MainWebsite() {
   // Reveal animation variants
@@ -265,11 +266,13 @@ export default function Home() {
             <ConnectModalProvider>
               <MobileApp onPlayDesktopIntro={() => setShowIntro(true)} />
               <ConnectModal />
+              <TeamOverlay />
             </ConnectModalProvider>
           ) : (
             <ConnectModalProvider>
               <MainWebsite />
               <ConnectModal />
+              <TeamOverlay />
             </ConnectModalProvider>
           )}
         </motion.div>

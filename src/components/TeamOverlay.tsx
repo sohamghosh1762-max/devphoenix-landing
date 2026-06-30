@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowRight, Sparkles, Users } from "lucide-react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { X, ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { useConnectModal } from "../context/ConnectModalContext";
 
@@ -107,18 +107,32 @@ export function TeamView({ isMobile = false, onExploreWork, onBackToHome }: Team
   }, [isMobile]);
 
   // Framer Motion variants
-  const contentVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const contentVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+    },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.15 }
-    }
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],
+        staggerChildren: 0.2,
+      },
+    },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.1, 0.25, 1]
+      }
+    }
   };
 
   return (
@@ -210,7 +224,11 @@ export function TeamView({ isMobile = false, onExploreWork, onBackToHome }: Team
         <motion.div 
           initial={{ opacity: 0, scale: 0.9, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1.0, delay: 0.2, ease: "easeOut" }}
+          transition={{
+            duration: 1.0,
+            delay: 0.2,
+            ease: [0.25, 0.1, 0.25, 1]
+          }}
           className="lg:col-span-6 flex items-center justify-center w-full min-h-[300px] lg:min-h-[450px]"
         >
           <div className="relative w-full max-w-[280px] sm:max-w-[340px] aspect-square flex items-center justify-center pointer-events-none">
@@ -228,7 +246,7 @@ export function TeamView({ isMobile = false, onExploreWork, onBackToHome }: Team
               transition={{
                 duration: 5,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: [0.42, 0, 0.58, 1]
               }}
               className="relative w-44 sm:w-56 h-44 sm:h-56 flex items-center justify-center"
             >
